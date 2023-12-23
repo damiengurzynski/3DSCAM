@@ -6,7 +6,7 @@ let ctx;
 
 //OBJECTS
 
-let camera = {x: 0, y: 0, z: -10, fov: 50, p: 0, y: 0};
+let camera = {x: 0, y: 0, z: -10, fov: 100, p: 0, y: 0};
 
 
 //CLASSES
@@ -243,10 +243,12 @@ let plane = new Mesh([
 
 plane.draw();
 
-
-setInterval(()=>
+let update = ()=>
 {
   ctx.clearRect(0,0, canvas.width, canvas.height)
-  plane.rotate(0.001,0.001);
+  plane.rotate(0.0001,0.0001);
   plane.draw();
-}, 100);
+  requestAnimationFrame(update);
+}
+
+requestAnimationFrame(update);
