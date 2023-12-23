@@ -1,16 +1,13 @@
 //GLOBAL VARIABLES
-
 let canvas;
 let ctx;
 
 
 //OBJECTS
-
 let camera = {x: 0, y: 0, z: -10, fov: 100, p: 0, y: 0};
 
 
 //CLASSES
-
 class Tri
 {
   constructor(v1,v2,v3,col)
@@ -138,14 +135,14 @@ class Vector3
   }
 }
 
-//FUNCTIONS
 
+//FUNCTIONS
 function init()
 {
   canvas = document.createElement('canvas');
-  canvas.width = 500;
-  canvas.height = 500;
-  canvas.style.border = '1px solid white';
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+  canvas.style.display = 'block';
   ctx = canvas.getContext('2d');
   document.body.appendChild(canvas);
 }
@@ -210,12 +207,21 @@ function draw(t)
 }
 
 
+// EVENT LISTENERS
+//resize canvas with window
+window.addEventListener('resize', e=>
+{
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+})
+
+
 //RUNTIME
 
 init();
 
 // CCwise = front facing / Cwise = back facing
-let plane = new Mesh([
+let cube = new Mesh([
   //front face CCW
   new Tri(new Vector3(10,10,0), new Vector3(0,0,0), new Vector3(10,0,0), 'salmon'),
   new Tri(new Vector3(0,10,0), new Vector3(0,0,0), new Vector3(10,10,0), 'salmon'),
@@ -241,13 +247,15 @@ let plane = new Mesh([
   new Tri(new Vector3(10,10,10), new Vector3(10,10,0), new Vector3(10,0,10), 'blue'),
 ]);
 
-plane.draw();
+cube.draw();
 
 let update = ()=>
 {
   ctx.clearRect(0,0, canvas.width, canvas.height)
-  plane.rotate(0.0001,0.0001);
-  plane.draw();
+  cube.rotate(0.0001,0.0001);
+
+  cube.draw();
+
   requestAnimationFrame(update);
 }
 
