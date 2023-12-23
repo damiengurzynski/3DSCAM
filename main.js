@@ -231,6 +231,14 @@ let plane = new Mesh([
   //bottom face CW
   new Tri(new Vector3(0,0,0), new Vector3(0,0,10), new Vector3(10,0,0), 'cyan'),
   new Tri(new Vector3(10,0,10), new Vector3(10,0,0), new Vector3(0,0,10), 'cyan'),
+
+  //left face CCW
+  new Tri(new Vector3(0,0,0), new Vector3(0,10,0), new Vector3(0,0,10), 'red'),
+  new Tri(new Vector3(0,10,10), new Vector3(0,0,10), new Vector3(0,10,0), 'red'),
+
+  //right face CCW
+  new Tri(new Vector3(10,0,0), new Vector3(10,0,10), new Vector3(10,10,0), 'blue'),
+  new Tri(new Vector3(10,10,10), new Vector3(10,10,0), new Vector3(10,0,10), 'blue'),
 ]);
 
 plane.draw();
@@ -239,6 +247,6 @@ plane.draw();
 setInterval(()=>
 {
   ctx.clearRect(0,0, canvas.width, canvas.height)
-  plane.rotate(0.001,0);
+  plane.rotate(0.001,0.001);
   plane.draw();
 }, 100);
