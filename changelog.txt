@@ -1,8 +1,9 @@
 30/12/23
 
+FPS counter
+General cleanup and comments
 Sorta solved near clipping
-Added fps kb controls (WASD)
-Added fps mouse control (no mouse clamp)
+Added fps kb controls (WASD + arrows)
 
 27/12/23
 
